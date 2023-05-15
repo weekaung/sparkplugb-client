@@ -1,4 +1,4 @@
-module numet.ai/sparkplug
+module github.com/weekaung/sparkplugb-client
 
 go 1.17
 
