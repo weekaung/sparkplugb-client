@@ -5,7 +5,7 @@ import (
 	"time"
 
 	mqtt "github.com/eclipse/paho.mqtt.golang"
-	"numet.ai/sparkplug/sparkplug"
+	"github.com/weekaung/sparkplugb-client/sparkplug"
 )
 
 // ******************************************************************************
