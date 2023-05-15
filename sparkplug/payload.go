@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/weekaung/sparkplugb-client/sproto"
 	"google.golang.org/protobuf/proto"
-	"numet.ai/sparkplug/sproto"
 )
 
 const namespace = "spBv1.0"
