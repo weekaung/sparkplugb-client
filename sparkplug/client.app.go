@@ -100,6 +100,29 @@ func (c *ClientApp) SetOnline() error {
 	return nil
 }
 
+func RequestNodeRebirth(client mqtt.Client, groupID string, nodeID string) error {
+	topic := namespace + "/" + groupID + "/" + MESSAGETYPE_NCMD + "/" + nodeID
+	ms := []Metric{}
+	m1 := Metric{
+		Name:     "Node Control/Rebirth",
+		DataType: TypeBool,
+		Value:    "true",
+	}
+	ms = append(ms, m1)
+	p := Payload{
+		Metrics: ms,
+	}
+	// Encode payload
+	b, err := p.EncodePayload(false)
+	if err != nil {
+		fmt.Println("Error encoding payload: ", err)
+		return err
+	}
+	token := client.Publish(topic, 0, false, b)
+	token.Wait()
+	return nil
+}
+
 // Disconnect disconnects the client from the MQTT server
 func (c *ClientApp) Disconnect() {
 	c.client.Disconnect(0)
