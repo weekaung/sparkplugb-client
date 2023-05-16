@@ -81,7 +81,7 @@ func getOnlinePayload(isOnline bool) []byte {
 	p := fmt.Sprintf(`{
 		"online": %t,
 		"timestamp": "%s"
-	}`, isOnline, time.Now().String())
+	}`, isOnline, time.Now().Format("2023-05-16 13:59:44"))
 	return []byte(p)
 }
 
