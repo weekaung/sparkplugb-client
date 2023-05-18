@@ -1,6 +1,6 @@
 # Sparkplug B Client for Golang #
 ## This library complies to the Sparkplug 3.0.0 specification ###
-### Note: Only portions of it, just enough for DataIO implementation ##
+### Note: Only portions of it, just enough for Winsonic DataIO implementation ##
 
 ###### To compile the sparkplug proto file
 protoc --go_out=. sproto/sparkplug_b.proto
