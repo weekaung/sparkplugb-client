@@ -1,7 +1,9 @@
 /*
 Sparkplug 3.0.0
 Note: Complies to v3.0.0 of the Sparkplug specification
-      to the extent needed for Winsonic DataIO and other industrial 4.0 products.
+
+	to the extent needed for Winsonic DataIO and other industrial 4.0 products.
+
 Copyright (c) 2023 Winsonic Electronics, Taiwan
 @author David Lee
 
@@ -72,8 +74,8 @@ func (c *ClientApp) Connect() error {
 		return err
 	}
 
-	// If client app is "DMS", subscribe to all messages
-	if c.Auth.Username == "DMS" {
+	// If client app is "SCADA", subscribe to all messages
+	if c.Auth.Username == "SCADA" {
 		topic := namespace + "/#"
 		c.subscribe(topic)
 	} else {
