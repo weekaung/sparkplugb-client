@@ -1,7 +1,9 @@
 /*
 Sparkplug 3.0.0
 Note: Complies to v3.0.0 of the Sparkplug specification
-      to the extent needed for Winsonic DataIO and other industrial 4.0 products.
+
+	to the extent needed for Winsonic DataIO and other industrial 4.0 products.
+
 Copyright (c) 2023 Winsonic Electronics, Taiwan
 @author David Lee
 
@@ -22,10 +24,21 @@ import (
 
 const namespace = "spBv1.0"
 const state = "STATE"
-const MESSAGETYPE_NBIRTH = "NBIRTH"
-const MESSAGETYPE_NDEATH = "NDEATH"
-const MESSAGETYPE_NDATA = "NDATA"
-const MESSAGETYPE_NCMD = "NCMD"
+
+type MessageType string
+
+const (
+	// Node message types
+	MESSAGETYPE_NBIRTH = "NBIRTH"
+	MESSAGETYPE_NDEATH = "NDEATH"
+	MESSAGETYPE_NDATA  = "NDATA"
+	MESSAGETYPE_NCMD   = "NCMD"
+	// Device message types
+	MESSAGETYPE_DBIRTH = "DBIRTH"
+	MESSAGETYPE_DDEATH = "DDEATH"
+	MESSAGETYPE_DDATA  = "DDATA"
+	MESSAGETYPE_DCMD   = "DCMD"
+)
 
 type Payload struct {
 	Timestamp time.Time
