@@ -1,7 +1,9 @@
 /*
 Sparkplug 3.0.0
 Note: Complies to v3.0.0 of the Sparkplug specification
-      to the extent needed for Winsonic DataIO and other industrial 4.0 products.
+
+	to the extent needed for Winsonic DataIO and other industrial 4.0 products.
+
 Copyright (c) 2023 Winsonic Electronics, Taiwan
 @author David Lee
 
@@ -151,7 +153,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	err = node.SendPayload(sparkplug.MESSAGETYPE_NBIRTH, ms)
+	err = node.PublishNodeBirth(ms)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -159,7 +161,7 @@ func main() {
 	m4.Value = "1"
 	ms1 := []sparkplug.Metric{}
 	ms1 = append(ms1, m4)
-	err = node.SendPayload(sparkplug.MESSAGETYPE_NDATA, ms1)
+	err = node.PublishNodeData(ms1)
 	if err != nil {
 		fmt.Println(err)
 	}
