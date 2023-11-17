@@ -104,7 +104,7 @@ func (p *Payload) EncodePayload(isDeathPayload bool) ([]byte, error) {
 func (p *Payload) DecodePayload(bytes []byte) error {
 	pl := sproto.Payload{}
 	proto.Unmarshal(bytes, &pl)
-	fmt.Println("Payload is ", pl.String())
+	// fmt.Println("Payload is ", pl.String())
 	if pl.Timestamp != nil {
 		p.Timestamp = time.UnixMilli(int64(*pl.Timestamp))
 	}
