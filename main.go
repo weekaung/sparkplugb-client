@@ -141,7 +141,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	time.Sleep(time.Second * 60)
+	time.Sleep(time.Second * 30)
 
 	// Publish Device Data
 	// When there is change in device metrics
@@ -150,7 +150,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	time.Sleep(time.Second * 60)
+	time.Sleep(time.Second * 10)
 
 	// Publish Device Data
 	// When there is change in device metrics
@@ -159,7 +159,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	time.Sleep(time.Second * 60)
+	time.Sleep(time.Second * 10)
 
 	// Publish Device Death
 	// If Device cannot be contacted
@@ -168,10 +168,10 @@ func main() {
 		fmt.Println(err)
 	}
 
-	// Sleep for 3 minutes then simulate a Node "death"
+	// Sleep for 1 minute then simulate a Node "death"
 	// by letting the code run its course
-	time.Sleep(time.Second * 60 * 3)
-
+	time.Sleep(time.Second * 10)
+	node.Disconnect()
 }
 
 func getNodeBirthMetrics() []sparkplug.Metric {

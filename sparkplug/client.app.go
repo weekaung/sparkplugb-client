@@ -113,6 +113,23 @@ func (c *ClientApp) SetOnline() error {
 	return nil
 }
 
+// Publish NCMD messages
+func (c *ClientApp) PublishNodeMetrics(groupID string, nodeID string, metrics []Metric) error {
+	topic := namespace + "/" + groupID + "/" + MESSAGETYPE_NCMD + "/" + nodeID
+	p := Payload{
+		Metrics: metrics,
+	}
+	// Encode payload
+	b, err := p.EncodePayload(false)
+	if err != nil {
+		fmt.Println("Error encoding payload: ", err)
+		return err
+	}
+	token := c.client.Publish(topic, 0, false, b)
+	token.Wait()
+	return nil
+}
+
 func RequestNodeRebirth(client mqtt.Client, groupID string, nodeID string) error {
 	topic := namespace + "/" + groupID + "/" + MESSAGETYPE_NCMD + "/" + nodeID
 	ms := []Metric{}
