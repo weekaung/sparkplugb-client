@@ -113,8 +113,8 @@ func (c *ClientApp) SetOnline() error {
 	return nil
 }
 
-// Publish NCMD messages
-func PublishNodeMetrics(client mqtt.Client, groupID string, nodeID string, metrics []Metric) error {
+// Send NCMD Node Control Command messages to Edge Node
+func SendNodeControlCMD(client mqtt.Client, groupID string, nodeID string, metrics []Metric) error {
 	topic := namespace + "/" + groupID + "/" + MESSAGETYPE_NCMD + "/" + nodeID
 	p := Payload{
 		Metrics: metrics,
