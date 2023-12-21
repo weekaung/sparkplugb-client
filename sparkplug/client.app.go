@@ -114,7 +114,7 @@ func (c *ClientApp) SetOnline() error {
 }
 
 // Publish NCMD messages
-func (c *ClientApp) PublishNodeMetrics(groupID string, nodeID string, metrics []Metric) error {
+func PublishNodeMetrics(client mqtt.Client, groupID string, nodeID string, metrics []Metric) error {
 	topic := namespace + "/" + groupID + "/" + MESSAGETYPE_NCMD + "/" + nodeID
 	p := Payload{
 		Metrics: metrics,
@@ -125,7 +125,7 @@ func (c *ClientApp) PublishNodeMetrics(groupID string, nodeID string, metrics []
 		fmt.Println("Error encoding payload: ", err)
 		return err
 	}
-	token := c.client.Publish(topic, 0, false, b)
+	token := client.Publish(topic, 0, false, b)
 	token.Wait()
 	return nil
 }
